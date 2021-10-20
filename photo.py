@@ -1,17 +1,10 @@
 #coding=utf-8
-
-'''
-1-將圖片轉化為陣列並存為二進位制檔案
-2-從二進位制檔案中讀取數並重新恢復為圖片
-'''
-
 from __future__ import print_function
 import numpy
 import PIL.Image 
 import pickle
 import matplotlib.pyplot
 import glob
-import os
 
 class Operation(object):
 	image_base_path = "C:/temp/basket/images/"
@@ -24,15 +17,15 @@ class Operation(object):
 		for i in range(n):
 			result = numpy.array([]) #建立一個空的一維陣列
 			image = PIL.Image.open(self.image_base_path+filenames[i])
+			if image.mode == 'P':
+				image = image.convert('RGB')
 			r,g,b = image.split() # rgb通道分離
 			size.append(r.size)
 			allsize = r.size[0]*r.size[1]
 			print(i,r.size,allsize)
-			# 注意：下面一定要reshpae(1024)使其變為一維陣列，否則拼接的資料會出現錯誤，導致無法恢復圖片
 			r_arr = numpy.array(r).reshape(allsize)
 			g_arr = numpy.array(g).reshape(allsize)
 			b_arr = numpy.array(b).reshape(allsize)
-			# 行拼接，類似於接火車；最終結果：共n行，一行3072列，為一張圖片的rgb值
 			image_arr = numpy.concatenate((r_arr,g_arr,b_arr))
 			result = numpy.concatenate((result,image_arr))
 
@@ -74,7 +67,8 @@ if __name__ == "__main__":
 	for file in glob.glob(my_operator.image_base_path+"*.jpg"):
 		file = file.replace('C:/temp/basket/images\\','')
 		images.append(file)
-
+	
+	print(images)
 	my_operator.image_to_array(images)
 	for file in glob.glob(my_operator.image_base_path+"*.jpg"):
 		name = file.replace('C:/temp/basket/images\\','').replace('.jpg', '').replace('.png', '')

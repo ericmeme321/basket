@@ -3,7 +3,9 @@ import webbrowser
 import os
 from pprint import pprint
 
-api_key = 'AIzaSyAUPAr7xVEf5TqH7xzJJAkWBHSLEB3NQ-g'
+from app import get_API_KEY
+
+api_key = get_API_KEY()
 gmaps = googlemaps.Client(api_key)
 address = "新北市淡水區文化里6鄰新生街20-3號3樓"
 destination = "水碓籃球場"

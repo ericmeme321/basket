@@ -1,18 +1,20 @@
 from __future__ import print_function
 from io import BytesIO
 from pprint import pprint
-import os, base64
+import base64
 import PIL.Image
 import requests
 import matplotlib.pyplot
 import googlemaps
+
+from app import get_API_KEY
 
 # url variable store url
 url = "https://maps.googleapis.com/maps/api/staticmap?"
   
 # center defines the center of the map,
 # equidistant from all edges of the map. 
-api_key = 'AIzaSyAUPAr7xVEf5TqH7xzJJAkWBHSLEB3NQ-g'
+api_key = get_API_KEY()
 
 gmaps = googlemaps.Client(key=api_key)
 

@@ -1,7 +1,9 @@
 from pprint import pp, pprint
+from app import *
 import googlemaps
 
-gmaps = googlemaps.Client(key='AIzaSyAUPAr7xVEf5TqH7xzJJAkWBHSLEB3NQ-g')
+api_key = get_API_KEY()
+gmaps = googlemaps.Client(key=api_key)
 
 # citys = ["台北市", "基隆市", "新北市", "連江縣", "宜蘭縣", "新竹市", "新竹縣", "桃園市",
 # 		"苗栗縣", "台中市", "彰化縣", "南投縣", "嘉義市", "嘉義縣", "雲林縣", "台南市",

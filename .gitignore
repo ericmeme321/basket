@@ -1,6 +1,6 @@
 .env
-*datas
-*images
+datas
+images
 *.txt
 *.csv
 *.bin

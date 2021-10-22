@@ -22,7 +22,7 @@ gmaps = googlemaps.Client(key=api_key)
 # 		"苗栗縣", "台中市", "彰化縣", "南投縣", "嘉義市", "嘉義縣", "雲林縣", "台南市",
 # 		"高雄市", "澎湖縣", "金門縣", "屏東縣", "台東縣", "花蓮縣"]
 
-home = ["台北體育館"]
+home = ["蘆洲運動中心"]
 home_result = gmaps.geocode(home)
 home_loc = home_result[0]['geometry']['location']
 center = str(home_loc['lat'])+","+str(home_loc['lng'])
